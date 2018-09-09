@@ -1,0 +1,16 @@
+$badge-size: 32px;
+
+:host(.badge) {
+  display: inline-flex;
+  border-radius: 100%;
+  background: #ccc;
+  color: #000;
+  width: $badge-size;
+  height: $badge-size;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

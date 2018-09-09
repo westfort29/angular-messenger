@@ -1,0 +1,19 @@
+<div class="d-flex">
+  <section
+    class="user-list"
+    [ngClass]="{'user-list--minimized': isChatView(), 'user-list--reduced': isUserInfoView()}"
+  >
+    <div class="list-group">
+      <a *ngFor="let user of users"
+        [routerLink]="['user/', user.id]"
+        class="list-group-item list-group-item-action d-flex align-items-center justify-content-center text-truncate"
+        [ngClass]="{'active': isUserSelected(user.id)}"
+      >
+        <app-badge *ngIf="isChatView()" [content]="getInitials(user)"></app-badge>
+        <span *ngIf="!isChatView()" class="user-list__username">{{user.firstName}} {{user.lastName}}</span>
+      </a>
+    </div>
+  </section>
+  <router-outlet>
+  </router-outlet>
+</div>

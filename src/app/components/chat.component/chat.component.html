@@ -1,0 +1,18 @@
+<div class="chat">
+  <div class="d-flex justify-content-end mb-sm-2">
+    <a [routerLink]="['../']"class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </a>
+  </div>
+  <div class="chat__history">
+    <ul *ngIf="chatHistory.length">
+      <li *ngFor="let message of chatHistory" class="chat__message" [@appearingAnimation]>
+        <app-chat-message [message]="message"></app-chat-message>
+      </li>
+    </ul>
+    <h5 *ngIf="!chatHistory.length" class="text-muted text-center">You don't have any messages, yet...</h5>
+  </div>
+  <div class="chat__form">
+    <app-chat-form (sendMessage)="onSendMessage($event)"></app-chat-form>
+  </div>
+</div>

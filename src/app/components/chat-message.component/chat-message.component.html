@@ -1,0 +1,3 @@
+<app-badge [content]="getInitials(message.author)"></app-badge>
+<small class="text-muted ml-sm-2">{{message.date | date:'short'}}</small>
+<p class="ml-sm-2" [innerHTML]="message.body"></p>

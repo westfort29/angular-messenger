@@ -1,0 +1,10 @@
+.chat-form {
+  &__text-area {
+    position: relative !important;
+    resize: none;
+    min-height: 50px;
+    max-height: 150px;
+    width: 100%;
+    overflow: auto;
+  }
+}

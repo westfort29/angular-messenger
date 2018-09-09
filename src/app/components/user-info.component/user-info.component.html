@@ -1,0 +1,22 @@
+<section class="d-flex justify-content-center">
+  <div class="card flex-grow-1">
+    <h5 class="card-title card-header">
+       <a [routerLink]="['/users']"class="close float-right" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      {{userInfo.firstName}} {{userInfo.lastName}}
+    </h5>
+    <div
+      class="card-body user-info__card-body"
+      *ngIf="!isChatVisible"
+    >
+      <p class="card-text">First Name: {{userInfo.firstName}}</p>
+      <p class="card-text">Last Name: {{userInfo.lastName}}</p>
+      <p class="card-text">Age: {{userInfo.age}}</p>
+      <p class="card-text">City: {{userInfo.city}}</p>
+      <p class="card-text">About: {{userInfo.about}}</p>
+      <a [routerLink]="['chat']" class="btn btn-primary">Send a message</a>
+    </div>
+  </div>
+</section>
+<router-outlet></router-outlet>
