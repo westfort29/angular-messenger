@@ -14,11 +14,9 @@ import { Subscription } from 'rxjs';
 })
 
 export class UserListComponent implements OnInit, OnDestroy {
-  public selectedUserId: number;
   public viewState: string;
   public users: IUser[];
   private viewStates$: Subscription;
-  private selectedUserId$: Subscription;
 
   constructor(
     private store: Store<fromRoot.State>,
@@ -38,24 +36,12 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.viewState = viewState;
       }
     );
-    this.selectedUserId$ = this.store
-    .pipe(
-      select(fromRoot.getSelectedUserId),
-      delay(0)
-    )
-    .subscribe(
-      (userId: number) => {
-        console.log(userId);
-        this.selectedUserId = userId;
-      }
-    );
     this.store.dispatch(new messengerViewActions.SetMessengerView(this.constants.viewSates.USERS_LIST));
     this.updateUsersList();
   }
 
   ngOnDestroy() {
     this.viewStates$.unsubscribe();
-    this.selectedUserId$.unsubscribe();
   }
 
   private updateUsersList(): void {
@@ -65,10 +51,6 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.users = users;
       }
     );
-  }
-
-  public isUserSelected(id: number): boolean {
-    return id === this.selectedUserId;
   }
 
   public getInitials(user: IUser): string {
